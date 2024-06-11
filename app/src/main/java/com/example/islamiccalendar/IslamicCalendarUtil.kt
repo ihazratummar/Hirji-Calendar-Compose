@@ -23,7 +23,7 @@ fun getIslamicMonthName(month: Int): String {
         "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"
     )
     // Adjusting the month index to match the IslamicCalendar class
-    val adjustedMonth = if (month == Calendar.JANUARY) 0 else month
+    val adjustedMonth = if (month == IslamicCalendar.MUHARRAM) 0 else month
     return monthNames.getOrElse(adjustedMonth) { "" } // Safe access to avoid ArrayIndexOutOfBoundsException
 }
 
@@ -73,7 +73,7 @@ fun getIslamicCalendarForMonths(): List<Pair<String, List<String>>> {
 
         // Move to the next month
         currentMonth++
-        if (currentMonth > IslamicCalendar.SAFAR) {
+        if (currentMonth > IslamicCalendar.DHU_AL_HIJJAH) {
             currentMonth = IslamicCalendar.MUHARRAM
             currentYear++
         }
